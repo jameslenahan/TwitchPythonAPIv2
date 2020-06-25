@@ -4,13 +4,9 @@ from emoji import demojize
 
 
 logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s — %(message)s',
-                    datefmt='%Y-%m-%d_%H:%M:%S',
+                    format= '%(message)s', #'%(asctime)s
+                    #datefmt='%Y-%m-%d_%H:%M:%S',
                     handlers=[logging.FileHandler('chat.log', encoding='utf-8')])
-
-"""
-Get token here: https://twitchapps.com/tmi/
-"""
 
 server = 'irc.chat.twitch.tv'
 port = 6667
@@ -25,6 +21,8 @@ def main():
     sock.send(f"PASS {token}\r\n".encode('utf-8'))
     sock.send(f"NICK {nickname}\r\n".encode('utf-8'))
     sock.send(f"JOIN {channel}\r\n".encode('utf-8'))
+
+
 
     try:
         while True:
